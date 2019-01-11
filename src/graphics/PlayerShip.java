@@ -108,7 +108,7 @@ public class PlayerShip extends GraphicObject {
             deltaX = Math.sin(angulo);
             deltaY = Math.cos(angulo);
 
-            position.x += 5*deltaX;
+            position.x -= 5*deltaX;
             position.y += 5*deltaY;
             move();
         }
@@ -123,7 +123,7 @@ public class PlayerShip extends GraphicObject {
             deltaY = Math.cos(angulo);
 
             position.x += 5*deltaX;
-            position.y += 5*deltaY;
+            position.y -= 5*deltaY;
             move();
         }
     }
