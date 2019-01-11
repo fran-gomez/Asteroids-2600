@@ -56,14 +56,23 @@ public abstract class GraphicObject extends JLabel {
     // Reubica el objeto grafico, y lo pinta
     public void move() {
 
+        // Corroboramos que x no se nos salga del rango (0, ANCHO_VENTANA)
         if (position.x >= Constantes.ANCHO_VENTANA)
             position.x -= Constantes.ANCHO_VENTANA;
+        if (position.x <= 0)
+            position.x += Constantes.ANCHO_VENTANA;
 
-        if (position.y >= Constantes.ALTO_VENTANA)
-            position.y -= Constantes.ALTO_VENTANA;
+        // Corroboramos que y no se nos salga del rango (0, ALTO_VENTANA)
+        if (position.y >= Constantes.ALTO_MAPA)
+            position.y -= Constantes.ALTO_MAPA;
+        if (position.y <= 0)
+            position.y += Constantes.ALTO_MAPA;
 
+        // Reajustamos la posicion del grafico y su hitbox
         this.setLocation(position);
         hitBox.setLocation(position);
+
+        // Redibujamos el grafico
         repaint();
     }
 

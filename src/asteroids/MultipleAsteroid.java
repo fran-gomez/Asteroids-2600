@@ -2,6 +2,8 @@ package asteroids;
 
 public class MultipleAsteroid extends Asteroid {
 
+    protected Asteroid componentes; //
+
     public MultipleAsteroid(int lp, int ip) {
         super(lp, ip);
     }

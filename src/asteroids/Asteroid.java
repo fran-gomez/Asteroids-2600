@@ -5,6 +5,7 @@ import controller.MovementStrategy;
 import controller.Visitor;
 import graphics.GraphicObject;
 import graphics.PlayerShip;
+import resources.Constantes;
 import shoots.Shoot;
 
 import java.util.Random;
@@ -20,13 +21,12 @@ public abstract class Asteroid extends GraphicObject {
     // << Constructor >>
     public Asteroid(int lp, int ip) {
         // Ponemos el asteroide en una posicion aleatoria del mapa
-        super(MyRandom.nextInt(1820), MyRandom.nextInt(950));
+        super(MyRandom.nextInt(Constantes.ANCHO_VENTANA), MyRandom.nextInt(Constantes.ALTO_VENTANA));
 
         this.lifePoints = lp;
         this.impactPoints = ip;
 
         this.mov = new LinearMovement(this);
-        //this.mov = new RandomMovement();
     }
 
     // << Consultas >>
@@ -50,7 +50,7 @@ public abstract class Asteroid extends GraphicObject {
     }
 
     public void colisionar(PlayerShip ps) {
-        //ps.receiveDamage(impactPoints);
+        ps.receiveDamage(impactPoints);
     }
 
     public void colisionar(Shoot s) {
