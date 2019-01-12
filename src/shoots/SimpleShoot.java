@@ -1,16 +1,22 @@
 package shoots;
 
 public class SimpleShoot extends Shoot {
-    public SimpleShoot(int x, int y, int dmg) {
-        super(x, y, dmg);
+    public SimpleShoot(int x, int y, double angulo, int dmg) {
+        super(x, y, angulo, dmg);
+
+        this.hitBox.setBounds(x, y, 5, 15);
     }
 
-    @Override
     public String getGraphicsPath() {
-        return null;
+        return "src/resources/DisparoSimple.png";
     }
 
-    @Override
+    public void move() {
+
+        moverAdelante();
+        super.move();
+    }
+
     public void die() {
 
     }

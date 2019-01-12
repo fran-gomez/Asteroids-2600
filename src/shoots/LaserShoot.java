@@ -2,8 +2,8 @@ package shoots;
 
 public class LaserShoot extends Shoot {
 
-    public LaserShoot(int x, int y, int dmg) {
-        super(x, y, dmg);
+    public LaserShoot(int x, int y, double angulo, int dmg) {
+        super(x, y, angulo, dmg);
     }
 
     @Override

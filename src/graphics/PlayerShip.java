@@ -38,7 +38,7 @@ public class PlayerShip extends GraphicObject {
         this.hitPoints = hp;
         this.shieldPoints = sp;
 
-        this.weapon = new BaseWeapon(hp);
+        this.weapon = new BaseWeapon(hitPoints, angulo);
 
 
         establecerTeclas();
@@ -101,8 +101,6 @@ public class PlayerShip extends GraphicObject {
     }
 
     private class MovimientoAtras extends  AbstractAction {
-
-        @Override
         public void actionPerformed(ActionEvent actionEvent) {
 
             deltaX = Math.sin(angulo);
@@ -115,8 +113,6 @@ public class PlayerShip extends GraphicObject {
     }
 
     private class MovimientoAdelante extends AbstractAction {
-
-        @Override
         public void actionPerformed(ActionEvent actionEvent) {
 
             deltaX = Math.sin(angulo);
@@ -129,7 +125,6 @@ public class PlayerShip extends GraphicObject {
     }
 
     private class RotacionDerecha extends AbstractAction {
-        @Override
         public void actionPerformed(ActionEvent actionEvent) {
 
 
@@ -143,7 +138,7 @@ public class PlayerShip extends GraphicObject {
             RotatedIcon ri = new RotatedIcon(imageIcon, Math.toDegrees(angulo));
             setIcon(ri);
 
-            //position.x -= 3;
+            weapon.setAngulo(angulo);
             setPosition(position);
 
             move();
@@ -151,7 +146,6 @@ public class PlayerShip extends GraphicObject {
     }
 
     private class RotacionIzquierda extends AbstractAction {
-        @Override
         public void actionPerformed(ActionEvent actionEvent) {
 
             angulo -= deltaAngulo;
@@ -164,7 +158,7 @@ public class PlayerShip extends GraphicObject {
             RotatedIcon ri = new RotatedIcon(imageIcon, Math.toDegrees(angulo));
             setIcon(ri);
 
-            //position.x += 3;
+            weapon.setAngulo(angulo);
             setPosition(position);
 
             move();
@@ -172,8 +166,6 @@ public class PlayerShip extends GraphicObject {
     }
 
     private class Disparar extends AbstractAction {
-
-        @Override
         public void actionPerformed(ActionEvent actionEvent) {
             //shoot();
             System.out.println("Disparo");

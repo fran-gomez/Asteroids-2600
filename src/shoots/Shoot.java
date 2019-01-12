@@ -8,12 +8,17 @@ import graphics.PlayerShip;
 public abstract class Shoot extends GraphicObject {
 
     // << Atributos >>
-    protected int damage; // Daño del disparo
+    protected int damage;    // Daño del disparo
+    protected double angulo; // Angulo de rotacion del proyectil
 
     // << Constructor >>
-    public Shoot(int x, int y, int dmg) {
+    public Shoot(int x, int y, double angulo, int dmg) {
         super(x, y);
         this.damage = dmg;
+
+        this.angulo = angulo;
+        this.deltaX = Math.sin(angulo);
+        this.deltaY = Math.cos(angulo);
     }
 
     // << Consultas >>
@@ -32,4 +37,9 @@ public abstract class Shoot extends GraphicObject {
 
     public void colisionar(Shoot s){}
     public void colisionar(PlayerShip ps){}
+
+    protected void moverAdelante() {
+        this.position.x += 5*deltaX;
+        this.position.y -= 5*deltaY;
+    }
 }
