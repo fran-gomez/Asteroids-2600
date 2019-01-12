@@ -11,11 +11,13 @@ public class Score extends JPanel {
     // TODO Agregar el archivo con los puntajes ordenados de forma decreciente
     protected JLabel scoreLabel;
     protected int score;
+    protected int playerLife;
 
     public Score() {
         super();
 
         score = 0;
+        playerLife = 100;
         scoreLabel = new JLabel("Score: " + score + " (P)ause, (R)esume, (Q)uit");
 
         this.setLayout(new FlowLayout());
@@ -27,7 +29,11 @@ public class Score extends JPanel {
 
     public void add(int s) {
         this.score += s;
-        scoreLabel.setText("Score: " + score + " (P)ause, (R)esume, (Q)uit");
+        scoreLabel.setText("Puntos de vida: " + playerLife + " - Puntaje: " + score + " - (P)ausa, (R)eanudar, (S)alir");
+    }
+
+    public void setPlayerLife(int playerLife) {
+        this.playerLife = playerLife;
     }
 
     public void saveScore() {

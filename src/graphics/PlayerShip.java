@@ -53,6 +53,9 @@ public class PlayerShip extends GraphicObject {
     public void receiveDamage(int dmg) {
         int damage = dmg - (dmg * shieldPoints / 100);
         this.lifePoints -= damage;
+
+        if (this.lifePoints <= 0)
+            this.lifePoints = 0;
     }
 
     public void accept(Visitor v) {

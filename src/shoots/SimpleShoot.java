@@ -11,12 +11,6 @@ public class SimpleShoot extends Shoot {
         return "src/resources/DisparoSimple.png";
     }
 
-    public void move() {
-
-        moverAdelante();
-        super.move();
-    }
-
     public void die() {
 
     }

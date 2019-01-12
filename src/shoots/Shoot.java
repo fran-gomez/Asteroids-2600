@@ -1,6 +1,7 @@
 package shoots;
 
 import asteroids.Asteroid;
+import controller.MovementStrategy;
 import controller.Visitor;
 import graphics.GraphicObject;
 import graphics.PlayerShip;
@@ -10,6 +11,7 @@ public abstract class Shoot extends GraphicObject {
     // << Atributos >>
     protected int damage;    // Daño del disparo
     protected double angulo; // Angulo de rotacion del proyectil
+    protected MovementStrategy mov; // Patron de movimiento de los proyectiles
 
     // << Constructor >>
     public Shoot(int x, int y, double angulo, int dmg) {
@@ -29,6 +31,11 @@ public abstract class Shoot extends GraphicObject {
     // << Comandos >>
     public void accept(Visitor v) {
         v.visit(this);
+    }
+
+    public void move() {
+        moverAdelante();
+        super.move();
     }
 
     public void colisionar(Asteroid a) {

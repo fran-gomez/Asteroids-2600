@@ -6,9 +6,8 @@ public class LaserShoot extends Shoot {
         super(x, y, angulo, dmg);
     }
 
-    @Override
     public String getGraphicsPath() {
-        return null;
+        return "src/resources/DisparoLaser.png";
     }
 
     @Override

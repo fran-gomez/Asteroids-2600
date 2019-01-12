@@ -79,18 +79,22 @@ public class Map extends JPanel implements Agregable {
 		// Orgia de colisiones
 		colider.checkCollisions();
 
+		// Actualizamos los puntos de vida del jugador
+		scorePanel.setPlayerLife(player.getLifePoints());
+
 		// Chequeamos que el jugador siga vivo
 		if (player.getLifePoints() <= 0)
 			this.endGame();
 
+		// No se me ocurre que poner... ya es tarde
 		for (GraphicObject o: objects) {
+			o.accept(contadorAsteroides);
 			o.move();
 		}
 
+		// Si ya eliminamos todos los asteroides, le pedimos mas al generador
 		/*if (contadorAsteroides.cantidadAsteroides() == 0)
 			generadorAsteroides.nextWave(objects);*/
-
-		// Si ya eliminamos todos los asteroides, le pedimos mas al generador
 
 		scorePanel.add(5);
 	}
