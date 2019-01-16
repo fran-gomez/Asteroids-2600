@@ -62,7 +62,7 @@ public class Map extends JPanel implements Agregable {
 		// Establecemos los oyentes para la pausa, reinicio y salida
         getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_P, 0), "Pausa");
         getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_R, 0), "Retornar");
-        getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_Q, 0), "Salir");
+        getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_S, 0), "Salir");
 
         getActionMap().put("Pausa", new Pause());
         getActionMap().put("Retornar", new Resume());

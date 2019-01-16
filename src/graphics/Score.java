@@ -22,7 +22,7 @@ public class Score extends JPanel {
 
         this.setLayout(new FlowLayout());
         this.setPreferredSize(new Dimension(Constantes.ANCHO_VENTANA,30));
-        this.setBackground(Color.black);
+        this.setBackground(Color.blue);
         this.setForeground(Color.white);
         this.add(scoreLabel);
     }

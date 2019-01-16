@@ -13,5 +13,5 @@ public abstract class MovementStrategy {
     }
 
     // << Consultas >>
-    public abstract Point nextPosition(); // Devuelve el proximo punto que ocupara el asteroide
+    public abstract Point nextPosition(double deltaX, double deltaY); // Devuelve el proximo punto que ocupara el asteroide
 }

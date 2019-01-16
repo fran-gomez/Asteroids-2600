@@ -40,7 +40,6 @@ public class PlayerShip extends GraphicObject {
 
         this.weapon = new BaseWeapon(hitPoints, angulo);
 
-
         establecerTeclas();
     }
 
@@ -174,6 +173,4 @@ public class PlayerShip extends GraphicObject {
             System.out.println("Disparo");
         }
     }
-
-
 }

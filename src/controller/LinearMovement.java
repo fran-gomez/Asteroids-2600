@@ -14,7 +14,7 @@ public class LinearMovement extends MovementStrategy {
     }
 
     @Override
-    public Point nextPosition() {
+    public Point nextPosition(double deltaX, double deltaY) {
 
         Random rnd = new Random();
 
@@ -22,13 +22,13 @@ public class LinearMovement extends MovementStrategy {
         int nuevoY = miAsteroide.getY();
 
         if (rnd.nextBoolean()) { // Muevo en x e y
-            nuevoX += 30;
-            nuevoY += 30;
+            nuevoX += miAsteroide.getSpeedPoints()*deltaX;
+            nuevoY += miAsteroide.getSpeedPoints()*deltaY;
         } else { // Muevo en x o en y
             if (rnd.nextBoolean())
-                nuevoX += 30;
+                nuevoX += miAsteroide.getSpeedPoints()*deltaX;
             else
-                nuevoY += 30;
+                nuevoY += miAsteroide.getSpeedPoints()*deltaY;
         }
 
 

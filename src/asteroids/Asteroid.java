@@ -15,6 +15,7 @@ public abstract class Asteroid extends GraphicObject {
     // << Atributos >>
     protected int lifePoints;   // Puntos de vida
     protected int impactPoints; // Daño por choque
+    protected int speedPoints;  // Velocidad de movimiento
 
     protected MovementStrategy mov; // Controlador de posicion
 
@@ -25,19 +26,25 @@ public abstract class Asteroid extends GraphicObject {
 
         this.lifePoints = lp;
         this.impactPoints = ip;
+        this.speedPoints = MyRandom.nextInt(30);
 
         this.mov = new LinearMovement(this);
+        this.deltaX = getDeltaX(this.position.x);
+        this.deltaY = getDeltaY(this.position.y);
     }
 
     // << Consultas >>
     public int getLifePoints() {
         return lifePoints;
     }
+    public int getSpeedPoints() {
+        return speedPoints;
+    }
 
     // << Comandos >>
     public void move() {
         // Calculamos la proxima posicion del asteroide, y lo movemos
-        this.position = mov.nextPosition();
+        this.position = mov.nextPosition(deltaX, deltaY);
         super.move();
     }
 
@@ -57,10 +64,27 @@ public abstract class Asteroid extends GraphicObject {
         s.die();
     }
 
-    public void colisionar(Asteroid a){}
+    public void colisionar(Asteroid a){
+        this.deltaY = -(this.deltaY);
+        this.deltaX = -(this.deltaX);
+    }
 
     public abstract Asteroid clone();
 
+
+    private int getDeltaX(int ancho) {
+        if (ancho <= Constantes.ANCHO_VENTANA/2)
+            return 1;
+        else
+            return -1;
+    }
+
+    private int getDeltaY(int alto) {
+        if (alto <= Constantes.ALTO_MAPA/2)
+            return 1;
+        else
+            return -1;
+    }
 
     // Generador de numeros estatico
     private static class MyRandom {

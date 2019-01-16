@@ -28,12 +28,12 @@ public abstract class GraphicObject extends JLabel {
         super();
 
         // Creamos el hitbox, y establecemos la posicion del objeto
-        hitBox = new Rectangle(x, y, Constantes.ALTO_GRAFICO, Constantes.ANCHO_GARFICO);
+        hitBox = new Rectangle(x, y, Constantes.ALTO_GRAFICO, Constantes.ANCHO_GRAFICO);
         position = new Point(x, y);
 
         // Setear la posicion absoluta y el tamaño del componente grafico
         this.setLocation(position);
-        this.setSize(Constantes.ALTO_GRAFICO, Constantes.ANCHO_GARFICO);
+        this.setSize(Constantes.ALTO_GRAFICO, Constantes.ANCHO_GRAFICO);
         this.setOpaque(false);
 
         // Establecer el icono del componente grafico
@@ -57,15 +57,15 @@ public abstract class GraphicObject extends JLabel {
     public void move() {
 
         // Corroboramos que x no se nos salga del rango (0, ANCHO_VENTANA)
-        if (position.x >= Constantes.ANCHO_VENTANA)
+        if (position.x >= Constantes.LIMITE_X_HI)
             position.x -= Constantes.ANCHO_VENTANA;
-        if (position.x <= 0)
+        if (position.x <= Constantes.LIMITE_X_LOW)
             position.x += Constantes.ANCHO_VENTANA;
 
         // Corroboramos que y no se nos salga del rango (0, ALTO_VENTANA)
-        if (position.y >= Constantes.ALTO_MAPA)
+        if (position.y >= Constantes.LIMITE_Y_HI)
             position.y -= Constantes.ALTO_MAPA;
-        if (position.y <= 0)
+        if (position.y <= Constantes.LIMITE_Y_LOW)
             position.y += Constantes.ALTO_MAPA;
 
         // Reajustamos la posicion del grafico y su hitbox
@@ -97,7 +97,7 @@ public abstract class GraphicObject extends JLabel {
         }
 
         // Ajustamos el tamaño de la imagen buffereada
-        Image img = icon.getScaledInstance(Constantes.ANCHO_GARFICO, Constantes.ALTO_GRAFICO, Image.SCALE_SMOOTH);
+        Image img = icon.getScaledInstance(Constantes.ANCHO_GRAFICO, Constantes.ALTO_GRAFICO, Image.SCALE_SMOOTH);
 
         // Creamos la imagen con el tamaño ajustado
         imageIcon = new ImageIcon(img);
