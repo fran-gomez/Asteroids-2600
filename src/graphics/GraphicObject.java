@@ -49,10 +49,6 @@ public abstract class GraphicObject extends JLabel {
     public abstract int getLifePoints();
 
     // << Comandos >>
-    public void setPosition(Point p) {
-        position = p;
-    }
-
     // Reubica el objeto grafico, y lo pinta
     public void move() {
 
@@ -71,9 +67,6 @@ public abstract class GraphicObject extends JLabel {
         // Reajustamos la posicion del grafico y su hitbox
         this.setLocation(position);
         hitBox.setLocation(position);
-
-        // Redibujamos el grafico
-        //repaint();
     }
 
     public abstract void accept(Visitor v);

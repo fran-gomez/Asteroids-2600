@@ -9,7 +9,6 @@ import weapons.BaseWeapon;
 import weapons.Weapon;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
@@ -40,6 +39,9 @@ public class PlayerShip extends GraphicObject {
         this.shieldPoints = sp;
 
         this.weapon = new BaseWeapon(hitPoints, angulo);
+
+        /*this.setOpaque(true);
+        this.setBackground(Color.white);*/
 
         establecerTeclas();
     }
@@ -142,7 +144,6 @@ public class PlayerShip extends GraphicObject {
             setIcon(ri);
 
             weapon.setAngulo(angulo);
-            setPosition(position);
 
             move();
         }
@@ -162,7 +163,6 @@ public class PlayerShip extends GraphicObject {
             setIcon(ri);
 
             weapon.setAngulo(angulo);
-            setPosition(position);
 
             move();
         }
