@@ -27,4 +27,8 @@ public class VisitorContador extends Visitor {
 
     public void visit(PlayerShip ps){}
     public void visit(Shoot s){}
+
+    public void reset() {
+        cantAsteroides = 0;
+    }
 }

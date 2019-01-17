@@ -26,7 +26,7 @@ public abstract class Asteroid extends GraphicObject {
 
         this.lifePoints = lp;
         this.impactPoints = ip;
-        this.speedPoints = MyRandom.nextInt(30);
+        this.speedPoints = MyRandom.nextInt(5);
 
         this.mov = new LinearMovement(this);
         this.deltaX = getDeltaX(this.position.x);
@@ -58,16 +58,15 @@ public abstract class Asteroid extends GraphicObject {
 
     public void colisionar(PlayerShip ps) {
         ps.receiveDamage(impactPoints);
+        deltaX = -deltaX;
+        deltaY = -deltaY;
     }
 
     public void colisionar(Shoot s) {
         s.die();
     }
 
-    public void colisionar(Asteroid a){
-        this.deltaY = -(this.deltaY);
-        this.deltaX = -(this.deltaX);
-    }
+    public void colisionar(Asteroid a){}
 
     public abstract Asteroid clone();
 
@@ -91,8 +90,12 @@ public abstract class Asteroid extends GraphicObject {
 
         public static int nextInt(int max) {
             Random r = new Random(System.currentTimeMillis());
+            int valor = r.nextInt(max);
 
-            return r.nextInt(max);
+            if (valor > 0)
+                return valor;
+            else
+                return r.nextInt(max);
         }
     }
 }

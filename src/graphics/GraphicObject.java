@@ -73,7 +73,7 @@ public abstract class GraphicObject extends JLabel {
         hitBox.setLocation(position);
 
         // Redibujamos el grafico
-        repaint();
+        //repaint();
     }
 
     public abstract void accept(Visitor v);

@@ -74,7 +74,7 @@ public class Map extends JPanel implements Agregable {
 	}
 
 	// << Comandos >>
-	public void gameLoop() {
+	public void update() {
 
 		// Orgia de colisiones
 		colider.checkCollisions();
@@ -86,17 +86,26 @@ public class Map extends JPanel implements Agregable {
 		if (player.getLifePoints() <= 0)
 			this.endGame();
 
+		contadorAsteroides.reset();
 		// No se me ocurre que poner... ya es tarde
 		for (GraphicObject o: objects) {
 			o.accept(contadorAsteroides);
 			o.move();
 		}
 
-		// Si ya eliminamos todos los asteroides, le pedimos mas al generador
-		/*if (contadorAsteroides.cantidadAsteroides() == 0)
-			generadorAsteroides.nextWave(objects);*/
+		// Si ya eliminamos todos los asteroides, le pedimos mas al generador y los agregamos al mapa
+		if (contadorAsteroides.cantidadAsteroides() == 0) {
+			generadorAsteroides.nextWave(objects);
+			for (GraphicObject go: objects)
+				this.add(go);
+		}
 
 		scorePanel.add(5);
+	}
+
+	public void render() {
+		for (GraphicObject go: objects)
+			go.repaint();
 	}
 
 	private void endGame() {
